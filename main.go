@@ -54,7 +54,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
 func main() {
 	debug := flag.Bool("debug", false, "sets log level to debug")
 	dir = flag.String("dir", ".", "file output directory")
-	lst := flag.String("listen", ":8080", "listen, default :8080")
+	lst := flag.String("listen", ":24999", "listen, default :24999")
 	flag.Parse()
 
 	zerolog.SetGlobalLevel(zerolog.InfoLevel)
