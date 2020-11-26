@@ -54,6 +54,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
 func main() {
 	debug := flag.Bool("debug", false, "sets log level to debug")
 	dir = flag.String("dir", ".", "file output directory")
+	lst := flag.String("listen", ":8080", "listen, default :8080")
 	flag.Parse()
 
 	zerolog.SetGlobalLevel(zerolog.InfoLevel)
@@ -64,7 +65,7 @@ func main() {
 
 	http.Handle("/upload", acl(http.HandlerFunc(upload)))
 
-	log.Debug().Str("dir", *dir).Msg("listening...")
-	err := http.ListenAndServe(":8080", nil)
+	log.Debug().Str("dir", *dir).Str("listen", *lst).Msg("listening...")
+	err := http.ListenAndServe(*lst, nil)
 	log.Fatal().Err(err).Msg("Done")
 }
