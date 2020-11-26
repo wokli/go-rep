@@ -3,7 +3,7 @@ on:
     branches:
       - main
 
-job:
+jobs:
   test:
     name: Run tests
     runs-on: ubuntu-latest
