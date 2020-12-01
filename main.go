@@ -35,7 +35,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
 	}
 
 	defer file.Close()
-	out, err := os.Create(header.Filename)
+	out, err := os.Create(fmt.Sprintf("%s/%s", *dir, header.Filename))
 	if err != nil {
 		log.Error().Err(err)
 		return
